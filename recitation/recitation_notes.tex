@@ -1,0 +1,226 @@
+\documentclass{report}
+
+\usepackage{amsmath, amssymb, geometry, setspace, tikz}
+\usepackage[parfill]{parskip}
+\onehalfspacing
+
+
+\title{Math 401: Recitation Notes}
+\author{Tim Farkas}
+\date{Fall 2021}
+
+\begin{document}
+\maketitle
+
+\section*{28 Sept 2021}
+
+Def'n: Let $x \in \mathbb{R}$, and $\epsilon > 0$. Then a neighborhood of $x$ is the set $N(x, \epsilon) = \{y \in \mathbb{R}: \left|y - x\right| < \epsilon$. 
+
+Def'n: If $S \subseteq \mathbb{R}$, then $x \in \mathbb{R}$ is an interior point of $S$ if $\exists \epsilon > 0$, s.t. $N(x, \epsilon) \subseteq S$. A boundary point of $S$ is $\forall \epsilon > 0: N(x, \epsilon) \cap S \neq \empty$ AND $N(x, \epsilon) \cap S^c \neq \emptyset$. 
+
+Def'n: Let $S \subseteq \mathbb{R}$, then $S$ is 
+
+emph{closed} if $\text{bd}(S) \subseteq S$
+
+emph{open} if $\text{bd}(S) \subseteq S^c$
+
+Thm: Let $S \subseteq \mathbb{R}$, then 
+
+$S$ is open iff $S = \text{int}(S)$. 
+
+Example: Prove that if $A \subseteq \mathbb{R}$, then int$(A) \subseteq A$. 
+
+Proof: Let $x \in \text{int}(A)$. Implies $\exists \epsilon > 0$ s.t. $N(x, \epsilon) \subseteq A$. 
+Then $x \in N(x, \epsilon) \subseteq A$, thus $x \in A$. 
+
+Example: Prove that if $A \subseteq B$, then int$(A) \subseteq \text{int}(B)$. 
+
+Proof: Let $x \in A$. Then $\exists \epsilon > 0$ s.t. $N(x, \epsilon) \in A$. But then $x \in N(x, \epsilon) \subseteq A \subseteq B$. 
+Hence $x \in B$. 
+
+Example: If $a < b$, prove that $(a, b)$ is an open set. 
+
+Proof. We show that $(a, b) = \text{int}((a, b))$.
+
+To show that $\text{int}(a, b) \subset (a, b)$, take $x \in \text{int}(a, b)$. Then if $\epsilon < \text{min}(\left|b-x\right|, \left|a-x\right|)$.  For the other direction, take $x \in (a, b)$ with $\epsilon$ as above, then $N(x, \epsilon) \subseteq (a, b)$, so $x \in \text{int}((a, b))$. 
+
+Example: If $a < b$, prove that $[a, b]$ is a closed set. 
+
+We show that bd($[a, b]) \subseteq S$. 
+
+$[a, b]^c = (-\infty, a) \cup (b, \infty)$. Each of $(-\infty, a)$ and $(b, \infty)$ are open, so $[a, b]$ is closed. 
+
+Defn: open cover
+Defn: finite subcover
+Defn: $S \in \mathbb{R}$ is called \emph{compact} if for \emph{every} open cover of $S$ there exists some finite subcover. 
+Defn: $x$ is an \emph{limit point} of $S$ if for every $\epsilon > 0$, $N(x, \epsilon)$ contains a point from $S$ different from $x$. 
+
+Example: Let 
+\[
+        S = \left\{\frac{1}{n}\middle| n \in \mathbb{N}\right\}
+\]
+
+Is $S$ bounded? Yes, at 0 and 1. 
+Is $S$ closed? No, since 0 is a boundary point of $S$, but $0 \notin S$. 
+Is $S$ compact? No, since no finite subcover of $S$ if $U$ is scaled neighborhood of each point in $S$. 
+
+Example: Let 
+\[
+        \bar{S} = \left\{\frac{1}{n}\middle| n \in \mathbb{N}\right\} \cup {0}
+\]
+
+Is $\bar{S}$ bounded? Yes
+Is $S$ closed? Yes! Because boundary 0 is in $\bar{S}$. 
+The neighborhood approah now will achieve a finite subcover if you choose a neighborhood around 0, there is some finite number of other neighborhoods that will cover the rest of set. 
+
+Example: Let 
+\[
+        S = \left\{\frac{1}{n} \middle| n\in \mathbb{N}\right\}
+\]
+
+Profve that 0 is a limite point of $S$. 
+
+WTS: $\forall \epsilon > 0$ the $N(0, \epsilon)$ contains at least one pt from $S$ different. 
+
+Given $\epsilon > 0, \exists N$ s.t. $\frac{1}{N} < \epsilon$.
+So $\forall \epsilon >0, \exists N$ s.t. $(-1/N, 1/N) \subseteq (-\epsilon, \epsilon)$. If $n \geq N$ then $1/n \leq 1/N$. 
+
+Proof. Let $\epsilon > 0$, then $\exists N \in \mathbb{N}$ s.t. $1/N < \epsilon$. 
+Therefore $(-1/N, 1/N) \subseteq N(0, \epsilon)$. 
+Now, let $n\geq N$, then $1/n \in S$ and $1/n \leq 1/N$. Therefore $1/n \in N(0, \epsilon)$. 
+
+\section*{5 Oct 2021}
+
+Def'n: A sequence is a fxn from $\mathbb{N}$ to $\mathbb{R}$. 
+Instead of saysing $f: \mathbb{N} \rightarrow \mathbb{R}$, we say $a_n = \dots$. 
+
+Def'n: We say $\lim_{n \rightarrow \infty} a_n = L$ if $\forall \epsilon > 0$, $\exists N \in \mathbb{N}$ s.t. if $n \geq N$, then $\left|a_n - L\right| < \epsilon$
+
+Thm. Supose $a, b \in \mathbb{R}$. Then $a = b$ iff $\forall \epsilon > 0$, $\left|a - b\right| < \epsilon$. 
+
+Proof: Suppose $a = b$, and let $\epsilon > 0$. Then $a - b = 0$. So $\left|a-b\right| = 0 < \epsilon$. 
+Conversely, suppose $\forall \epsilon > 0$, $\left|a - b\right| < \epsilon$. 
+Then if $a - b > 0$, then $\exists \epsilon$ s.t. $\left|a - b\right| \geq  \epsilon$. 
+Then if $a - b < 0$, then $\exists \epsilon$ s.t. $\left|a - b\right| \geq  \epsilon$. 
+
+Exercise: Suppose $a, b \in \mathbb{R}$. Prove that if $\forall \epsilon > 0$, $a \leq b + \epsilon$ then $a \leq b$. 
+
+Proof (by contrapositive): We show that $a > b$ implies $\exists \epsilon > 0$ s.t. $a > b + \epsilon$. 
+
+If $a > b$, then $a - b > 0$. Take $\epsilon = \frac{a - b}{2}$. Then $b + \epsilon = b + \frac{a - b}{2}$ ... 
+
+Exercise: Prove $\lim_{n \rightarrow \infty} \frac{1}{n} = 0$. 
+
+Proof: By Archimedian Property, $\exists N \in \mathbb{N}$ s.t. $\frac{1}{N} < \epsilon$. Then, if $n \geq N$ then $\frac{1}{n} \leq \frac{1}{N}$, and $\left|\frac{1}{n} - 0\right| = \left|\frac{1}{n}\right| \leq \frac{1}{N} < \epsilon$. 
+
+For proof by contradiction, negate definition of limit: 
+
+\[
+        \exists \epsilon >  0, \forall N \in \mathbb{N} \text{we have} n \geq N \text{and} \left|a_n - L\right| \geq \epsilon
+\]
+
+Exercise (Homework): Suppose $\lim a_n = L$. Define $b_n = a_{2n}$. Prove that $\lim b_n = L$. 
+
+Proof (by contradiction). 
+
+Suppose $\lim b_n \neq L$ and $\lim a_n = L$. Then $\exists \epsilon > 0$ s.t. $\forall N_1 \in \mathbb{N}$, if $n \geq N_1$ then $\left|b_n\right| \geq \epsilon$. 
+But we also have $\exists N_2 \in \mathbb{N}$ s.t. if $n \geq N_2$ then $\left|a_n - L\right| < \epsilon$. 
+Let $N* > \max\{N_1, N_2\}$ and suppose $n \geq N*$. 
+Then $2n > n > N*$ and so $\left|a_{2n} - L\right| < \epsilon$, but this contradicts $\left|a_{2n} - L\right| = \left|b_n - L\right| < \epsilon$. 
+
+Alternate: Sine $\lim a_n = L$, we have $\forall \epsilon > 0$, $\exists N \in \mathbb{N}$ s.t. if $n \geq N$ then $\left|a_n - L\right| < \epsilon$. 
+Suppose $n \geq N$, then $2n \geq N$ and $\left|b_n - L\right| < \epsilon$. $\square$. 
+
+Exercise: Suppose $S \subseteq \mathbb{R}$ is non-empty and bounded above. Prove there is a sequence $\{a_n\}$ s.t. $\forall n \in \mathbb{N}$ we have $a_n \in S$ and $\lim a_n =\sup(S)$. 
+
+1. $\forall a \in S$, $a \leq sup(S)$. 
+
+2. If $B < \sup(S)$, then B is not an upper bound, that is $\exists a \in S$ s.t. $B < a$. 
+
+For example, suppose $B = \sup(S) - \frac{1}{n}$. 
+We know $\exists a_n \in S$ s.t. $\sup(S) - \frac{1}{n} < a_n \leq \sup(S)$. 
+Since $\sup(S) + \frac{1}{n}$ is an upper bound. 
+So $\sup(S) - \frac{1}{n} < a_n < \sup(S) + \frac{1}{n}$.
+Equivalently, $-\frac{1}{n} < a_n - \sup(S) < \frac{1}{n}$. 
+Which is $\left|a_n - \sup(S)\right| < \frac{1}{n}$. 
+
+Formal proof: 
+
+Let $n \in \mathbb{N}$, then $\sup(S) - \frac{1}{n}$ is not an upper bound for $S$. 
+Therefore, $\exists a_n \in S$ s.t. $\sup(S) - \frac{1}{n} < a_n$. But since $a_n \in S$, $a_n \leq \sup(S)$, 
+and we always have $\sup(S) < \sup(S) + \frac{1}{n}$. 
+Therefore, $\left|a_n - \sup(S)\right| < \frac{1}{n}$ for all $n \in \mathbb{N}$. 
+
+Now, let $\epsilon > 0$. Then by Achimedean Property, $\exists N \in \mathbb{N}$ s.t. $\frac{1}{N}< \epsilon$.
+So let $n \geq N$, then $\left|a_n - \sup(S)\right| < \frac{1}{n} \leq \frac{1}{N} < \epsilon$.$\square$. 
+
+\section*{12 Oct 2021}
+
+Defn: A sequence $(a_n)$ converges to L if $\forall \epsilon$, $\exists N \in \mathbb{N}$, s.t. $\forall n \in \mathbb{N}$, $n > N \Rightarrow \left|a_n - L\right| < \epsilon$. 
+
+Defn: A sequence $(a_n)$ is Cauchy if $\forall \epsilon > 0$, $\exists N \in \mathbb{N}$, s.t. $\forall n, m \in \mathbb{N}$, $m, n \geq N \Rightarrow \left|a_m - a_n\right| < \epsilon$. 
+
+Thm. A sequence converges iff it is Cauchy. 
+
+Corrolary: A sequence is not Cauchy if $\exists \epsilon > 0$ s.t. $\forall N \in \mathbb{N}$, $\exists m, n \in \mathbb{N}, m,n \geq N \Rightarrow \left|a_m - a_n\right| \geq \epsilon$. 
+
+Example: Let $a_n = sin(\frac{n\pi}{2})$, prove that $(a_n)$ does not converge. $(a_n) = \{1, 0, -1, 0, 1 ...\}$. So even terms are 0, and odd terms alternate between -1 and 1. 
+
+Take $\epsilon = \frac{1}{2}$ and $N \in \mathbb{N}$. Then $2N+1, 2N \geq N$ and $\sin\left(2N \frac{\pi}{2}\right) = 0$ and $sin\left((2N +1)\frac{\pi}{2}\right)$ is 1 or -1. In either case $\left|a_{2N+1} - a_{2N}\right| = 1 \geq \frac{1}{2} = \epsilon$, so $(a_n)$ is not Cauchy. 
+
+Example: Let $a_n = 1 + (-1)^n$. Prove $(a_n)$ is not Cauchy. 
+
+Let $\epsilon = 1$ and $N \in \mathbb{N}$. Then $2N, 2N +1 \geq N$, and $1 + (-1)^{2N} = 2$ and $1 + (-1)^{2N + 1} = 0$. Then $\left|a_{2N} - a_{2N +1}\right| = 2 > 1 = \epsilon$. Hence, $(a_n)$ is not Cauchy. 
+
+Thm. If a sequence converges, then it is bounded. 
+
+Thm. If a sequence is bounded and monotone, then it converges. 
+
+Example: Let $a_1 = 2$ and $a_{n+1} = \frac{1}{5}(a_n + 7)$. Show $(a_n)$ converges with the bounded monotone theorem. 
+
+Scratch: $a_n = \{2, 9/2 ...\}$. Solve for limit: $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} \frac{L + 7}{5} \Rightarrow L = \frac{7}{2} < 2$. 
+
+Proof. $a_1 \leq 2$. Assume $a_k \leq 2$ for some $k >1$. Then $a_{k+1} = \frac{a_k + 7}{5} \leq \frac{9}{5} \leq 2$. So $a_n \leq 2$ by induction. 
+
+Next, see that $a_1 = 2 > a_2 = \frac{9}{5}$. Now suppose $a_k > a_{k+ 1}$. Then $a_{k+1} = \frac{a_k + 7}{5} \geq \frac{a_{k+1} + 7}{5} = a_{k + 2}$, hence $(a_n)$ is monotone decreasing. 
+
+Example: Let $a_1 = 5$ and $a_{n+1} = \sqrt{4a_n + 1}$. Prove $a_n$ converges. 
+
+HW Problem 4: $a_1 = 1$ and 
+
+\begin{equation*}
+        a_n = \left\{
+                \begin{array}{ll}
+                        \sqrt{a_{n-1}} &\quad  \text{for $n$ odd} \\
+                        a_{n - 1} + 1 & \quad \text{for $n$ even}
+                \end{array}\right.
+\end{equation*}
+
+Show bounded: Let $b_n = a_{2n - 1}$, then $b_1 = a_1 = 1$, and $b_n = a_{2n -1}$, and $b_{n+1} = ...  = \sqrt{b_n + 1}$. 
+
+Use induction to show that both subsequences are bounded and monotone. also show for $c_n = a_{2n} = a_{2n-1} + 1 = b_n + 1$. Since $0 \leq b_n \leq 2$, we have $1 \leq c_n \leq 3$. So $0 \leq a_n \leq 3$. 
+
+\section*{26 Oct 2021}
+
+Defn: Let $D \subseteq R$, $c \in D$, and $f: D \rightarrow \mathbb{R}$. Then $f$ is continuous at $c$ if $\forall \epsilon > 0$, $\exists \delta > 0$, s.t. $\forall x \in \mathbb{R}$, if $\left|x -c \right| < \delta$ then $\left|f(x) - f(c) \right| < \epsilon$.
+
+Ex. Let $f: \mathbb{R} \rightarrow \mathbb{R}$ by $f(x) = x^2$. Prove that $f$ is continuous at $c = 2$. 
+
+Let $\epsilon$ be arbitrary, and find $\delta$ such that $\left|x - c\right| < \delta$ implies $\left|f(x) - f(c)\right| < \epsilon$. 
+
+If $\left|x - 2\right| < 1$ then $\left|x - 2 + 2 + 2\right| \leq \left|x-2\right| + \left|2 + 2\right| \leq 1+ 4 =5$. 
+
+So PF
+
+Let $\epsilon > 0$ and $\delta = \min\{1, \epsilon/5\}$. Then if $\left|x - 2\right| < \delta$, then $\left|x+2\right| \leq \left|x - 2\right| + \left|2 + 2\right| = 5$, and $\left|f(x) - f(2)\right|= \left|x - 2\right\left||x + 2\right| \leq 5\delta < \epsilon$. 
+
+Ex. Let $f: \mathbb{R} \rightarrow \mathbb{R}$ by $f(x) = x^3$. Prove that $f$ is continuous at $c = 2$. 
+
+
+Defn: $f$ is not continuous at $c$ if $\exists \epsilon > 0$, such that $\forall \delta > 0$, $\exists x_0 \in D$ st $\left|x_0 - c\right| < \delta$ and $\left|f(x_0) - f(c)\right| \geq \epsilon$. 
+
+
+
+\end{document}
+
+

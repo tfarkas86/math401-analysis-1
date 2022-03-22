@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace, titlesec}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+
+\title{Math 401: Homework 8}
+\author{Tim Farkas}
+\date{Oct 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Suppose $f: \mathbb{R} \rightarrow \mathbb{R}$, and $g: \mathbb{R} \rightarrow \mathbb{R}$ are functions. Suppose $c$ and $L$ are real numbers. Define $h: \mathbb{R} \rightarrow \mathbb{R}$ by 
+
+\begin{equation*}
+        h(x) = \left\{
+                \begin{array}{ll}
+                        f(x) & \quad \text{if } x < c \\
+                        g(g) & \quad \text{if } x \geq c
+                \end{array}	
+                \right.
+\end{equation*}
+
+Show that if $\lim_{x \rightarrow c} f(x) = L$ and $\lim_{x \rightarrow c} g(x) = L$, then $\lim_{x \rightarrow c} h(x) = L$. 
+
+Proof: 
+
+Since $\lim_{x \rightarrow c} f(x) = L$, we have that for a given $\epsilon$, there exists a $\delta_f$ such that if $\left|x - c\right| < \delta_f$, then $\left|f(x) - L\right| < \epsilon$.
+
+Likewise, since $\lim_{x \rightarrow c} g(x) = L$, we have that for the same $\epsilon$, there exists a $\delta_g$ such that if $\left|x - c\right| < \delta_g$, then $\left|g(x) - L\right| < \epsilon$.
+
+Take $\delta = \min\{\delta_f, \delta_g\}$. Then if $\left|x - c\right| < \delta$, we have that $\left|x - c\right| < \delta_f$ and $\left|x-c\right| < \delta_g$, and $\left|f(x) - L\right| < \epsilon$ and $\left|g(x) - L\right| < \epsilon$.
+Therefore we have that $\left|h(x) - L\right| < \epsilon$, and $\lim_{x \rightarrow c} h(x) = L$. $\square$.  
+
+\section*{Problem 2}
+
+Define $f: \mathbb{R} \rightarrow \mathbb{R}$ by 
+\begin{equation*}
+        f(x) = \left\{
+\begin{array}{ll}
+        2x & \quad \text{if $x$ is irrational} \\
+        3x & \quad \text{if $x$ is rational}
+\end{array}\right.
+\end{equation*}
+
+Show that $\lim_{x \rightarrow 0} f(x) = 0$. 
+
+Proof: Because between any two real numbers $x < y$ there exists an irrational number $r$, it suffices to show that $\lim_{x \rightarrow 0} 2x = 0$. 
+
+Take $\delta = \frac{\epsilon}{3}$. Then we have that $\left|f(x) - 0\right| = 3x < \epsilon$  whenever $\left|x - 0\right| = x < \delta = \frac{\epsilon}{3}$. 
+
+\section*{Problem 3}
+
+Suppose $f: \mathbb{R} \rightarrow \mathbb{R}$ is a function and define $g: \mathbb{R} \rightarrow \mathbb{R}$ by 
+
+\begin{equation*}
+        g(x) = \left\{
+\begin{array}{ll}
+        f(x - 1) & \quad \text{if $x < 5$} \\
+        f(4) & \quad \text{if $x \geq 5$}
+\end{array}\right.
+\end{equation*}
+
+Show that if $\lim_{x \rightarrow 1} f(x)  = L$, then $\lim_{x \rightarrow 2} g(x) = L$. 
+
+Since $\lim_{x \rightarrow 1} f(x) = L$ we have a $\delta > 0$ such that $\left|f(x) - L \right| < \epsilon$ for any $\epsilon$ whenever $\left|x - 1\right| < \delta$. Therefore, we also have that $\left|f(x - 1) - L\right| < \epsilon$ whenever $\left|(x - 1) - 1\right| = \left|x - 2\right| < \delta$. We are only concerned with cases when $x < 5$ so $g(x) = f(x - 1)$, hence $\left|f(x - 1) - L\right| = \left|g(x) - L\right| < \epsilon$, and $\lim_{x \rightarrow 2} g(x) = L$. 
+\end{document}

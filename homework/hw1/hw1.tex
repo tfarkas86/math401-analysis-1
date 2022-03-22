@@ -1,0 +1,102 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\title{Math 401: Homework 1}
+\author{Tim Farkas}
+\date{Aug 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+\subsection*{1a}
+Statement: $\forall a \in A, \exists y \in B$ s.t. $ y^2 = x$.
+
+Negation: $\exists a \in A$ s.t. $\forall y \in B$, $y^2 \ne x$
+
+\subsection*{1b}
+Statement: $\forall x \in A$, we have $\{x\} \subseteq B$. 
+
+Negation: $\exists x \in A$ s.t. $\{x\} \nsubseteq B$
+
+\subsection*{1c}
+Statement: There is an element of A that is also an element of B. 
+
+Negation: $\forall a \in A, a \notin B$. Equivalently, $A \cap B = \emptyset$ 
+
+\section*{Problem 2}
+Prove whether the following are true or false. 
+
+\subsection*{2a}
+Statement: $\forall x,y \in \mathbb{R}$ we have $x^2 = y^2$
+
+Value: False. 
+
+Proof: Take $x = 0$, $y = 1$. Then $x^2 = 0 \ne 1 = y^2$ $\square$
+\subsection*{2b}
+Statement: $\forall x \in \mathbb{Z}, \exists y \in \mathbb{R}$ s.t. $x^2 = y^2$
+
+Value: True. 
+
+Proof: Because $\mathbb{Z} \subset \mathbb{R}$, we can always take $x = y$. Then $x^2 = y^2$. $\square$
+\subsection*{2c}
+Statement: $\forall x \in \mathbb{R}, \exists y \in \mathbb{R}$ s.t. $xy = 1$
+
+Value: False. 
+
+Proof: Take $x = 0$. Then $\forall y$ we have $xy = 0.$ $\square$
+\subsection*{2d}
+Statement: $\forall x \in \mathbb{R}, \exists y \in \mathbb{R}$ s.t. $xy = 0$
+
+Value: True. 
+
+Proof: Take $y = 0$. Then $\forall x \in \mathbb{R}$ we have $xy = 0$
+\subsection*{2e}
+Statement: $\exists y \in \mathbb{R}$ s.t. $\forall x \in \mathbb{R}$ we have $xy = 0$. 
+
+Value: True.
+
+Proof: Statement 2e is equivalent to statement 2d. See proof to 2d. 
+
+\section*{Problem 3}
+Prove that if $x \in \mathbb{R}$, then $1 < x < 3$ implies $-10 < x^3 - x < 30$.  
+
+Proof: Assume $1 < x < 3$. This implies $1 < x^3 < 27$, and also that  $-3 < -x < -1$. Adding the two implied statements yields $-2 < x^3 - x < 26$, and so we have $1 < x < 3 $ implies $-2 < x^3 - x < 26$. Then, because $-10 < -2 < x^2 - x < 26 < 30$, we see that $1 < x < 3$ implies $-10 < x^3 - x < 30$. $\square$
+
+\newpage
+\section*{Problem 4}
+For $n \in \mathbb{Z}$, prove that if $n$ is even, then $n^2 = 4k + 4$ for some $k \in \mathbb{Z}$.  
+
+Proof: Assume $n$ is even. Then $\exists q \in \mathbb{Z}$ s.t. $n = 2q$. 
+To prove the statement, we substitute $2q$ for $n$ in the consequent. Rearranging a bit first: 
+
+\begin{flalign*}
+  k &= (n^2 - 4) / 4 &\\
+  k &= ((2q)^2 - 4) / 4 & \\
+  k &= (4q^2 - 4) / 4 &\\
+  k &= q^2 - 1 \\
+\end{flalign*}
+Hence, $n^2 = 4k + 4$ whenever $k = q^2 - 1$. $\square$
+
+\section*{Problem 5}
+Prove that if $x \in \mathbb{R}$, then $-\frac{7}{16} < x^2 -x < -\frac{5}{16}$ 
+implies that $x \notin \left(\frac{1}{10}, \frac{3}{10} \right)$. 
+
+\noindent
+Proof: To simplify calculations, we prove the contrapositive. If $x \in \mathbb{R}$, then $\frac{1}{10} < x < \frac{3}{10}$ 
+implies $x^2 -x < -\frac{7}{16}$ or $-\frac{5}{16} < x^2 - x$. 
+
+Assume $\frac{1}{10} < x < \frac{3}{10}$. Then $\frac{1}{100} < x^2 < \frac{9}{100}$ and $-\frac{3}{10} < -x < -\frac{1}{10}$. 
+Adding the last two inequalities yields $-\frac{29}{100} < x^2 - x < -\frac{1}{100}$. 
+
+Hence, if $\frac{1}{10} < x < \frac{3}{10}$, 
+then $-\frac{29}{100} < x^2 - x$. To finish the proof, we show that 
+$-\frac{5}{16} = -\frac{500}{1600} < -\frac{464}{1600} = -\frac{29}{100} < x^2 - x$, satisfying the condition. $\square$ 
+
+\end{document}
+

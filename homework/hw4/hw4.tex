@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+% new commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+
+\title{Math 401: Homework 4}
+\author{Tim Farkas}
+\date{Sep 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Suppose A and B are nonempty sets of negative numbers. 
+
+\subsection*{a)}
+
+Prove that $\sup(A \cup B)$ exists. 
+
+Proof: Because $A$ and $B$ both have an upper bound of 0, 0 is an upper bound of $A \cup B$. 
+Furthermore, $A \cup B \neq \emptyset$, since $A \neq \emptyset$ and $B \neq \emptyset$. 
+Therefore, $A \cup B$ is a nonempty subset of $\R$ and is bounded above, so by the completeness axiom, $A \cup B$ has a supremum. 
+
+\subsection*{b)}
+
+Prove that $\sup(A) \leq \sup(A \cup B)$. 
+
+Proof. Suppose $\sup(A) > \sup(A \cup B)$.
+This implies that $\forall c \in C = (A \cup B)$,  $\exists a \in A$ such that $a > c$. 
+This is because by definition of the supremum we have that for any number $\alpha' < \sup(A)$, there exists a number $a \in A$ such that $a > \alpha'$. Take $\sup(A\cup B) = \alpha'$ demonstrates the implication.    
+
+But we also have that $\forall a \in A$, $\exists c \in C$ such that $c = a$, a clear contradiction that $a > c$. 
+
+Therefore, $\sup(A) \ngtr \sup(A \cup B) \Leftrightarrow \sup(A) \leq \sup(A \cup B)$. $\square$
+
+\section*{Problem 2}
+
+Define $f: \R \rightarrow \R$ by $f(x) = x^2$. Consider also the set 
+
+\begin{equation*}
+    C = \left\{\left(-\frac{1}{2}\right)^n \middle| n \in \N \right\}
+\end{equation*}
+
+Compute the following: 
+
+\subsection*{a)}
+
+$\inf\left( (1, 2) \right) = 1$
+
+\subsection*{b)}
+
+$\inf(f\left( (1, 2) \right)) = \inf\left( (1, 4) \right)) = 1$, because $f$ is monotonic increasing on the interval $(1, 2)$. 
+
+\subsection*{c)}
+
+$\inf(C) = \inf\left( [-1/2, 1/4] \right) = -1/2$, because the sequence defined by $C$ alternates from negative to positive across increasing $n$, and decreases in absolute value. Hence $C(1) = -1/2$ is it's most extremely negative value, and $C(2) = 1/4$ is it's most extreme positive value, and the values of $C(n)$ are therefore contained in the closed interval $[-1/2, 1/4]$. 
+
+\subsection*{d)}
+
+$\inf\left( (f(C)) \right) = \inf\left( (0, f(-1/2)] \right) = \inf\left( (0, 1/4] \right) = 0$, because $f$ maps all values to the positive reals, and $C(n)$ approaches but never equals zero  as $n \rightarrow \infty$.
+
+\section*{Problem 3}
+
+Consider two sequences $a_1, a_2, \dots$ and $b_1, b_2, \dots$ with restrictions
+
+\begin{equation*}
+  0 \leq a_n \leq 1 \quad \text{and} \quad 0 \leq b_n \leq 1
+\end{equation*}
+
+for all $n$. We can form two different sets by adding these:
+
+\begin{equation*}
+  C = \{a_n + b_n | n \in \N\}
+\end{equation*}
+
+and 
+
+\begin{equation*}
+  D = \{a_m + b_n|m, n \in \N\}
+\end{equation*}
+
+\subsection*{a)}
+
+Prove that $\sup(C) \leq \sup(D)$. 
+
+Proof: Suppose that $\sup(C) > \sup(D)$. 
+This implies $\exists c \in C$ s.t. $\forall d \in D$ we have $c > d$. 
+This is because by definition of the supremum we have that for any number $\alpha' < \sup(C)$, there exists a number $c \in C$ such that $c > \alpha'$. Take $\sup(D) = \alpha'$ demonstrates the implication.    
+But we also have that $\forall c \in C, \exists d \in D$ s.t. $c = d$, a clear contradiction.
+This last statement is true because we have $\forall n \in \N, \exists m \in N$ s.t. $m = n$, yielding $c = d$. $\square$
+
+\subsection*{b)}
+
+Find an example of two sequences for which $\sup(C) \neq \sup(D)$. 
+
+An example is $a_n = 1 - 1/n$, which increases monotonically with range = [0, 1),
+and $g_n = 1/n$, which decreases monotonically with range = (0, 1]. 
+
+$C = \{1\}$ is a constant function of $n$, and hence has $\sup(C) = 1$. 
+$D = (0, 2)$, and hence has $\sup(D) = 2$
+
+\end{document}
+

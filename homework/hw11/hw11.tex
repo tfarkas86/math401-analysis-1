@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace, titlesec}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+
+\title{Math 401: Homework 11}
+\author{Tim Farkas}
+\date{Nov 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Suppose $f, g: \mathbb{R} \rightarrow \mathbb{R}$ are differentiable at 0 and that $f(0) = g(0) = 0$. Define
+
+\begin{equation*}
+        k(x) = \left\{
+\begin{array}{ll}
+        f\circ g(x) & x<0 \\
+        0 & x = 0 \\
+        g \circ f(x) & x > 0
+\end{array}\right.
+\end{equation*}
+
+Show that $k$ is differentiable at 0 and find $k'(0)$. 
+
+Since $f \circ g (x)$ and $g \circ f(x)$ are differentiable at 0, we have that $(f\circ g)'(x) = f'(g(x))g'(x)$ and $(g \circ f)'(x) = g'(f(x))f'(x)$. Evaluating each derivative at $x = 0$ yields
+
+\begin{align*}
+        (f \circ g)'(0) &= f'(g(0))g'(0)\\
+        &= f'(0)g'(0)
+\end{align*}
+
+and 
+
+\begin{align*}
+        (g \circ f)'(0) &= g'(f(0))f'(0)\\
+        &= f'(0)g'(0)
+\end{align*}
+
+Hence we can show that both the left and right limits of $k$ at $x \rightarrow 0$ are equal: 
+
+\begin{align*}
+        \lim_{x \rightarrow ^-0} \frac{k(x) - k(0)}{x - 0} &= \frac{(f \circ g)(x) - 0}{x} \\
+                                                           &= \frac{(f \circ g)(x) - (f \circ g)(0)}{x - 0} \\
+                                                           &= (f \circ g)'(x) \\
+                                                           &= f'(0)g'(0)
+\end{align*}
+
+and
+
+\begin{align*}
+        \lim_{x \rightarrow ^+0} \frac{k(x) - k(0)}{x - 0} &= \frac{(g \circ f)(x) - 0}{x} \\
+                                                           &= \frac{(g \circ f)(x) - (g \circ f)(0)}{x - 0} \\
+                                                           &= (g \circ f)'(x) \\
+                                                           &= f'(0)g'(0)
+\end{align*}
+
+Hence $k$ is differentiable at 0 and $k'(0) = f'(0)g'(0)$. 
+
+\section*{Problem 2}
+
+Suppose $f, g: \mathbb{R}\rightarrow \mathbb{R}$, $S$ is a finite set where $S \subseteq (0, \infty)$ and $\forall x \notin S, \, f(x) = g(x)$. 
+
+Show that if $f$ is differentiable at $0$, then $g$ is differentiable at 0 and $f'(0) = g'(0)$. 
+
+Since $S$ is a finite set, $S$ has a minimum and $\min\{S\} > 0$. 
+
+Hence, take $\delta = \min\{S\}$. Then there exists a neighborhood $N(0, \delta)$ wherein $f(x) = g(x)$, and hence $f'(0) = g'(0)$. 
+
+\section*{Problem 3}
+
+Prove that if a polynomial function $p: \mathbb{R} \rightarrow \mathbb{R}$ is divisible by $(x - 2)^3$, then the polynomial $p'(x)$ is divisible by $(x - 2)^2$. 
+
+By definition we can take $p = (x - 2)^3p^*$, where $p^*$ is some polynomial factor of $p$. 
+
+Then we have 
+\begin{align*}
+        p' &= \frac{d}{dx}(x - 2)^3 p^* \\
+           &= 3(x-2)^2p^* + (x-2)^3p'^* & \quad \text{(product rule)}\\
+           &= (x-2)^2\left[3p^* + (x-2)p'^* \right] \\
+           &= (x-2)p^{**}
+\end{align*}
+
+Where $p^{**}$ is a polynomial, since the derivative of a polynomial is a polynomial, and the sum of polynomials is polynomial. 
+
+\section*{Problem 4}
+
+Prove that if $f(x)$ is an even function, then $f'(0) = 0$. 
+
+If $f(x)$ is even, then $f'(x)$ is odd, by proof in recitation. 
+
+If $f'(x)$ is odd, then we have that $f'(0) = f'(-0) = -f(0)$, so $f'(0) = -f'(0)$, and therefore we have that $2f'(0) = 0$, and $f'(0) = 0$. 
+
+\end{document}

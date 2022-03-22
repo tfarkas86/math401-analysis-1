@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\title{Math 401: Homework 5}
+\author{Tim Farkas}
+\date{Sep 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Prove that if $S \subseteq T \subseteq \mathbb{R}$, then every interior point of S is also an interior point of T. 
+
+Lemma. If $S \subseteq T$, then $T^c \subseteq S^c$. 
+
+Proof. If $S \subseteq T$ then $S \cup T = T$. Taking the complement yields $S^c \cap T^c = T^c$, indicating that $T^c \subseteq S^c$. $\square$
+
+Proof of Problem 1. Take $x$ an interior point of $S$. 
+Then by definition $\exists \epsilon > 0$ s.t. $N(x, \epsilon) \cap (\mathbb{R}/S) = \emptyset$. 
+Writing $\mathbb{R}/S$ as $S^c$, by the above lemma, we have that 
+
+\begin{align*}
+        \emptyset &= N(x, \epsilon) \cap S^c \\  
+          &= N(x, \epsilon) \cap (S^c \cup T^c) &\text{(applying the lemma)} \\
+          &= (N(x, \epsilon) \cap S^c) \cup (N(x, \epsilon) \cap T^c) \\
+          &= \emptyset \cup (N(x, \epsilon) \cap T^c) \\
+          &= N(x, \epsilon) \cap T^c
+\end{align*}
+
+The above shows that if $N(x, \epsilon) \cap S^c = \emptyset$, we also have $N(x, \epsilon) \cap T^c = \emptyset$, proving that any interior point of S is also an interior point of T. 
+
+\section*{Problem 2}
+
+Define f: $\mathbb{R} \rightarrow \mathbb{R}$ by $f(x) = x^2$. 
+
+\subsection*{a)}
+
+What are the interior points of $S = f((0, 1))$, and is $S$ an open set?
+
+Because $f$ is monotonic increasing on (0, 1), we have that $S = (f(0), f(1)) = (0, 1)$. 
+Hence the interior points are (0, 1). 
+$S$ is an open set because it's boundary points, 0 and 1, are not in S.  
+
+\subsection*{b)}
+
+What are the interior points of $S = f((-1, 2))$, and is $S$ an open set?
+
+$f$ is monotic decreasing on $(-1, 0]$ and monotonic increasing on $[0, 2)$. 
+Hence, we have that $S = [0, 4)$. 
+
+The interior points of $S$ are (0, 4), and $S$ is not open, since the boundary point at 0 is not in S.  
+
+\section*{Problem 3}
+
+Take f as defined above. 
+
+\subsection*{a)}
+
+What are the interior points of $S = f^{-1}((0, 1))$, and is $S$ an open set?
+
+$S = (-1, 0) \cup (0, 1)$. 
+The interior points of S are equal to S, so yes, $S$ is an open set. 
+
+\subsection*{b)}
+
+What are the interior points of $S = f^{-1}((-1, 4))$, and is $S$ an open set?
+
+The preimage $f^{-1}((-1, 0)) = \emptyset$, so $f^{-1}((-1, 4)) = f^{-1}([0, 4)) = (-2, 2)$. 
+$S$ is an open set, because the interior of $S$ is equal to $S$.  
+
+\section*{Problem 4}
+
+Take $f$ as defined above. 
+
+\subsection*{a)}
+
+What are the boundary points of $S = f^{-1}([0, 1])$, and is $S$ a closed set?
+
+$S = [-1, 1]$. The boudary points are -1 and 1. 
+Yes, $S$ is closed, because both boundary points are in $S$.
+
+\subsection*{b)}
+
+What are the boundary points of $S = f^{-1}((-1, 4])$, and is $S$ a closed set?
+
+$S = [-2, 2]$, so the boundary points are -2 and 2. 
+$S$ is a closed set, because both boundary points are in $S$. 
+
+\section*{Problem 5}
+
+Let 
+\begin{equation*}
+        S = \left\{\frac{1}{n}\middle| n \in (\mathbb{Z}/\{-1, 0, 1\})\right\} 
+\end{equation*}
+
+Show that $S$ is not compact by findind an open cover of $S$ that has no finite subcover. 
+
+An open cover $\mathcal{F}$ of $S$ is 
+
+\begin{equation*}
+        \mathcal{F} = \left\{\left(-1, -\frac{1}{n+1}\right) \cup \left(\frac{1}{n+1}, 1\right)\middle| n \in \mathbb{N})\right\}
+\end{equation*}
+
+But $\mathcal{F}$ has no finite subcover of $S$. 
+
+
+
+
+
+
+
+
+\end{document}
+
+

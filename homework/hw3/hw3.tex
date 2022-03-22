@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+% new commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+
+\title{Math 401: Homework 3}
+\author{Tim Farkas}
+\date{Sep 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Suppose $a_0 = 0$ and for every $n \in \N$ we have $a_n = a_{n-1} + 2^{-n}$.
+
+Define closed intervals $I_n = [a_{n-1}, a_n]$ for all $n$. 
+
+Informally, we the sequence of $I_n$ to be:
+\begin{equation*}
+  \langle[0, 1/2], [1/2, 3/4], [3/4, 7/8], [7/8, 15/16], \dots , [\frac{2^{n - 1} - 1}{2^{n-1}}, \frac{2^n - 1}{2^n}]\rangle
+\end{equation*}
+
+\subsection*{a)} Calculate the set $\bigcap_{n = 1}^\infty I_n$.
+
+From the sequence above, we can see that the intersection of any three elements is $\emptyset$, hence the intersection of the entire sequence is also $\emptyset$. 
+
+\subsection*{b)} Calculate the set $\bigcup_{n = 1}^\infty I_n$. 
+
+From the sequence above, we see that the union of any two adjacent elements is $[a, b]_n \cup [b, c]_{n+1} = [a, c].$ Hence, for any $n < \infty$ we have the union to equal $[0, \frac{2^n-1}{2^n}]$.
+Next, we see that $\lim_{n \rightarrow \infty} \frac{2^n-1}{2^n} = 1$, so this sequence has an asymptote at 1.
+Hence, the union over the whole sequence is [0, 1). 
+
+\newpage
+
+\section*{Problem 2}
+
+Define $f: \N \rightarrow \R$ by $f(1) = 0$ and
+
+\begin{equation*}
+  f(n) = \left\{ \begin{array}{ll}
+      -f(n-1) - 1 & \quad \text{if $n$ is even} \\
+      -f(n-1) & \quad \text{if $n$ is odd}
+  \end{array}\right.
+\end{equation*}
+
+The sequence defined by this function covers $\Z$ as follows: \{1, -1, 2, -2, 3, -3, \dots, n, -n\}. 
+
+\subsection*{a)}
+
+Following the above sequence, this function is one-to-one. 
+
+\subsection*{b)}
+
+Absolutely not. $f$ takes $\N$ into $\Z \subset \R$, hence $f$ is not onto. 
+
+\section*{Problem 3}
+
+
+Prove the following: If $f: A \rightarrow B$ is a function such that for all $C \subseteq A$ the sets $C$ and $f(C)$ are equinumerous, then $f$ is injective. 
+
+Proof: 
+
+This we can prove by the contrapositive: If $f$ is not injective, then there exists some $C \subseteq A$ such that the sets $C$ and $f(C)$ are not equinumerous. 
+
+Assume $f$ is not injective. 
+Then by definition of injection there exist two elements $a, \, b \in A$ for which $f(a) = f(b)$. 
+Take $C = \{a, b\} \subseteq A$, as required. 
+Then $f(C) = \{f(a), f(b)\} = \{f(a) =f(b)\}$, and $|C| = 2 \neq 1 = |f(C)|$. $\square$ 
+
+\section*{Problem 3 (old)}
+
+Prove the following: If $f: A \rightarrow B$ is a function such that for all $C \subseteq A$ the sets $A$ and $f(C)$ are equinumerous, then $f$ is injective. 
+
+Proposterous! Take $C$ a proper subset of $A$, such that $|C| < |A|$, and $|f(C)| = |A|$ as required. Then $|C| < |f(C)| = |A|$ and $f$ cannot be 1-to-1.
+
+\section*{Problem 4}
+
+Let $A = \{1, 2, 3\}$ and let $\iota$ and $g$ denote the specific functions from $A$ to $A$ by 
+
+\begin{equation*}
+  \iota(1) = 1,\quad \iota(2) = 2,\quad \iota(3) = 3
+\end{equation*}
+
+and 
+
+\begin{equation*}
+  g(1) = 2, \quad g(2) = 1, \quad g(3) = 3
+\end{equation*}
+
+Now let $\Gamma$ denote the set of \emph{all} functions from $A$ to $A$ and define $\mathcal{F}: \Gamma \rightarrow \Gamma$ by 
+
+\begin{equation*} 
+  \mathcal{F}(f) = f \circ f
+\end{equation*}
+
+\subsection*{a)}
+
+Calculate $\mathcal{F}(g)$
+
+\begin{equation*}
+    \mathcal{F}(g) = g \circ g = \left\{
+      \begin{array}{ccccc}
+        n &g           &g(n) &g           &g(g(n)) \\
+        1 &\rightarrow &2    &\rightarrow &1       \\
+        2 &\rightarrow &1    &\rightarrow &2       \\
+        3 &\rightarrow &3    &\rightarrow &3       
+    \end{array}\right.
+  \end{equation*}
+
+Hence $\mathcal{F}(g) = g \circ g = \iota$. 
+
+\subsection*{b)}
+
+Calculate $\mathcal{F}^{-1}(\{\iota\})$. 
+
+From part a we see that $g \in \mathcal{F}^{-1}(\{\iota\})$, and it is easy to see also that $\iota \in \mathcal{F}^{-1}(\{\iota\})$.
+But we also see that any function $q$ for which a pair of elements in $\iota$ are once permuted will have $\mathcal{F}(q) = \iota$. 
+We also assert that no function from $A$ to $A$ that is not one-to-one can have a composition with itself that yields $\iota$, 
+and no function that is a full permutation of $\iota$ can have a function once composed with itself yielding $\iota$ (though full permutations \emph{twice} composed will indeed be equal to $\iota$). Hence, 
+
+$\mathcal{F}^{-1}(\{\iota\}) = \{\iota, \{q: A \rightarrow A \, |\, q(a) = a,\, q(b) = c,\, q(c) = b,\, \{a, b, c\} = A\}\}$
+
+Note that $g \in q$. 
+
+\subsection*{c)}
+
+Calculate $\mathcal{F}^{-1}(\{g\})$.
+
+$\mathcal{F}^{-1}(\{g\}) = \emptyset$. There is no non-injective function $q$ for which $\mathcal{F}(q) = g$, since then $q$ would also not be surjective, and $g$ is surjective. Furthermore, we have exhausted above the consequences of permuting $\iota$, and none of these cases yield $\mathcal{F}(q) = g$.
+
+
+
+
+
+
+
+\end{document}
+

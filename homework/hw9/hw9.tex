@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace, titlesec}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+
+\title{Math 401: Homework 9}
+\author{Tim Farkas}
+\date{Oct 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Define $f: \mathbb{R} \rightarrow \mathbb{R}$ by 
+
+\begin{equation*}
+        f(x) = \left\{
+\begin{array}{ll}
+        x &\quad \text{$x$ is rational} \\
+        2\left|x\right| &\quad \text{$x$ is irrational}
+\end{array}\right.
+\end{equation*}
+
+Prove that $f$ is continuous at $c = 0$. 
+
+Proof. Take $\delta = \epsilon/2$. There are two cases. 
+
+If $x$ is rational, then we have $\left|x - c\right| = \left|x - 0\right| = \left|x\right| < \delta = \epsilon/2$. 
+This implies that $\left|f(x) - f(0)\right| = \left|x - 0\right| = \left|x\right| < \delta = \epsilon/2 < \epsilon$. 
+
+If $x$ is irrational, then we have $\left|f(x) - f(0)\right| = \left|2\left|x\right|\right| = 2\left|x\right| < 2\delta = \epsilon$. 
+
+Hence in both cases, $\left|x - 0\right| < \delta = \epsilon/2$ implies $\left|f(x) - 0\right| < \epsilon$, proving $f$ is continous at $c = 0$. 
+
+\section*{Problem 2}
+
+Given $f$ as in Problem 1, show that $f$ is not continuous at $c = 2$. 
+
+We prove by showing that there exists a sequence $(a_n)$ that converges to $c = 2$, but which $f((a_n))$ does not converge to $f(2)$. 
+
+Proof. Take $(a_n) = 2 - \frac{1}{\sqrt{n}}$, where $n$ is a prime number. Then we have that $a_n$ is irrational for all $n$, and hence $f((a_n)) = 2\left|2 - \frac{1}{\sqrt{n}}\right| = \left|4 - \frac{2}{\sqrt{n}}\right|$. 
+Then $(a_n)$ converges to 2, but $f((a_n))$ converges to 4, but $f(2) = 2$ because 2 is rational, so $\lim_{n \rightarrow \infty} f((a_n)) \neq f(2)$, and $f$ is not continous at $c = 2$. 
+
+\section*{Problem 3}
+
+Suppose $f, g, h: \mathbb{R} \rightarrow \mathbb{R}$, $c \in \mathbb{R}$, and $f(x) \leq g(x) \leq h(x)$ for all $x \in \mathbb{R}$. 
+
+Show that if $f(c) = h(c)$ and $f$ and $h$ are continuous at $c$, that $g$ is also continous at $c$. 
+
+Proof: Since $f(x) \leq g(x) \leq h(x)$ for all $x$ (including $c$), we have that $f(c) = h(c)$ implies that $f(c) = g(c) = h(c)$. 
+
+Now, since $f$ is continous at $c$, we have that $\forall \epsilon > 0$, $\exists \delta_1 > 0$, such that $\left|x - c\right| < \delta_1$ implies that $\left|f(x) - f(c)\right| < \epsilon \Leftrightarrow f(c) - \epsilon < f(x) < f(c) + \epsilon$. 
+
+Likewise for $h$, since $h$ is continous at $c$, we have that $\forall \epsilon > 0$, $\exists \delta_2 > 0$, such that $\left|x - c\right| < \delta_1$ implies that $\left|h(x) - h(c)\right| < \epsilon \Leftrightarrow h(c) - \epsilon < h(x) < h(c) + \epsilon$.
+
+Take $\delta^* = \min\{\delta_1, \delta_2\}$. First, if $\left|x - c\right| < \delta^*$, we have that both $f$ and $h$ are continuous, since $\delta* \leq \delta_1$ and $\delta^* \leq \delta_2$. 
+
+Then, since $f(x) \leq g(x) \leq h(x)$, we have that $f(c) - \epsilon < f(x) < g(x) < h(x) < h(c) + \epsilon$, and since $f(c) = g(c) = h(c)$, we have that $g(c) - \epsilon < g(x) < g(c) + \epsilon \Leftrightarrow \left|g(x) - g(c)\right| < \epsilon$, proving that $g$ is continuous at $c$. 
+
+\section*{Problem 4}
+
+Let
+
+\begin{equation*}
+        D = \{0\} \cup \left\{\frac{1}{n}\middle | n \in \mathbb{N}\right\}
+\end{equation*}
+
+and suppose $f: D \rightarrow \mathbb{R}$ is a function. Let $(a_n)$ be the sequence defined 
+
+\begin{equation*}
+        a_n = f\left(\frac{1}{n}\right)
+\end{equation*}
+
+Show that if $\lim_{n \rightarrow \infty} a_n = f(0)$, then $f$ is continuous at 0. 
+
+Proof. Take $x_n = \frac{1}{n}$. Then we have that $(x_n)$ converges to 0, and we have been given that $a_n = f((x_n))$ converges to $f(0)$. Hence, by Theorem 21.2b, $f$ is continuous at 0. 
+
+
+
+\end{document}

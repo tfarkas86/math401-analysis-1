@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace, titlesec}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+
+\title{Math 401: Homework 7}
+\author{Tim Farkas}
+\date{Oct 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Show that if $(a_n)$ is Cauchy, that $c_n = \mu a_n + b$ is also Caucy, where $\mu, b \in \mathbb{R}$ and $\mu \neq 0$. 
+
+Proof (direct): Since $(a_n)$ is Cauchy, we have for some $\epsilon$ that $\exists N_1 \in \mathbb{N}$ s.t. $m, n > N_1$ implies 
+
+\begin{align*}
+        \left|a_m - a_n\right| &< \epsilon \\
+        \Leftrightarrow \left|\frac{c_m - b}{\mu} - \frac{c_n - b}{\mu}\right| &< \epsilon \\
+        \Leftrightarrow \left|\frac{c_m - c_n}{\mu}\right| &< \epsilon \\
+        \Leftrightarrow \left|c_m - c_n\right| &< \left|\mu\right|\epsilon
+\end{align*}
+
+Hence, we can take $N_2 = \left|\mu\right|\epsilon$ to ensure $\left|c_m - c_n\right| < \epsilon$, proving $(c_n)$ is a Cauchy sequence.  
+
+\section*{Problem 2}
+
+Prove that if $(a_n)$ is a Cauchy sequence that $b_n = a_{n-1}$ is also a Cauchy sequence. 
+
+Proof: Since $(a_n)$ is Cauchy, we have for some $\epsilon$ that $\exists N_1 \in \mathbb{N}$ s.t. $m, n > N_1$ implies $\left|a_m - a_n\right| < \epsilon$. Take $N_2 = N_1 + 1$. Then if $m > N_2$ and $n > N_2$, we have $m - 1 > N_1$ and $n - 1 > N_1$. Hence, $\left|a_{m-1} - a_{n-1}\right| < \epsilon \Leftrightarrow \left|b_m - b_n\right| < \epsilon$. $\square$. 
+
+\section*{Problem 3}
+
+Consider the sequence $(a_n)$ defined recusively by $a_1 = 1$ and 
+
+\begin{equation*}
+        a_n = \sqrt{6 + a_{n-1}}
+\end{equation*}
+
+Show that $(a_n)$ is convergent and its limit is no greater than 10. 
+
+Proof: We demonstrate first that $(a_n)$ is monotone, and then that its limit is no greater than 10, showing it is bounded and proving it is a convergent sequence. 
+
+1. (induction) Note that $a_1 < a_2 < a_3 \Leftrightarrow 1 < \sqrt{7} < \sqrt{6 + \sqrt{7}}$. Then, for $n \geq 2$, suppose $a_{k+1} > a_k$ for some $k$. Then we have $a_{k+1} = \sqrt{6 + a_k} > \sqrt{6 + a_{k-1}} = a_k$, proving that $a_{k+1} > a_k$ for all $k \in \mathbb{N} \geq 2$. 
+
+2. (induction). Note that $a_1 < a_2 < 10 \Leftrightarrow 1 < \sqrt{7} < 10$. Suppose $a_k < 10$ for some $k \in \mathbb{N} > 2$. Then $a_{k+1} = \sqrt{6 + a_k} < \sqrt{6 + 10} = 4 < 10$. Hence $a_k < 10$ for all $k \in \mathbb{N} > 2$. 
+
+Hence $(a_n)$ is a convergent sequence whose limit is at most 10. 
+
+\section*{Problem 4}
+
+Consider the sequence $(a_n)$ defined recursively as $a_1 = 1$ and  
+
+\begin{equation*}
+        a_n = \left\{ 
+                \begin{array}{ll}
+                        \sqrt{a_{n-1}} &\quad \text{if $n$ is odd} \\
+                        a_{n-1} + 1   & \quad \text{if $n$ is even} 
+                \end{array}
+                \right.
+\end{equation*}
+
+for $n \geq 2$. 
+
+\subsection*{(a)}
+
+Show that $(a_n)$ is bounded. 
+
+Proof (induction). We define two subsequences, one for each of even and odd $n \in \mathbb{N}$. 
+
+Define $b_n = a_{2n - 1}$ to isolate the odd $n$. Then $b_n = \sqrt{a_{2n-2}}$ and $b_{n+1} = \sqrt{a_{2n - 12} + 1}$. But then $b_{n+1} = \sqrt{b_n + 1}$.
+
+We show by induction that $\lim_{n\rightarrow \infty} b_n \leq 2$. Note that $b_1 = 1 < 2$ and $b_2 = \sqrt{3} < 2$. Suppose $b_k \leq 2$. Then $b_{n+1} = \sqrt{b_n + 1} < \sqrt{2 + 1} < \sqrt{3} < 2$. Hence $b_n < 2$ for all $n$. 
+
+Next, define $c_n = a_{2n}$ to isolate the even $n$. Then $c_n = a_{2n} = a_{2n - 1} + 1 = b_n + 1$. Since $\lim_{n \rightarrow \infty} b_n < 2$, we have that $\lim_{n \rightarrow \infty} c_n < 3$. 
+
+\subsection*{(b)}
+Show that $(a_n)$ is not Cauchy. 
+
+Since $a_n = a_{n-1} + 1$ when $n$ is even, we can take $\epsilon = \frac{1}{2}$, and $m = n-1$. Then $m > n$, but $\left|a_m - a_n\right| = 1 > \frac{1}{2}$ for all $m, n \geq 2$. 
+
+\subsection*{(c)}
+
+Show that $(a_n)$ is not convergent. 
+
+Proof: See Theorem 18.12: A sequence of real numbers is convergent iff it is a Cauchy sequence. By proof in part (b), $(a_n)$ is not a Cauchy sequence, hence it is not convergent. 
+
+\subsection*{(d)}
+
+Find a subsequence of $(a_n)$ that converges. 
+
+The subsequence $(b_n)$ of odd indices, defined as $b_n = a_{2k - 1}$, for all $k \in \mathbb{N}$ converges. We showed in part (a) that it is bounded above by 2. To complete the proof we show that it is monotone increasing. 
+
+Notice $b_1 < b_2 < b_3 \Leftrightarrow 1 < \sqrt{2} < \sqrt{\sqrt{2} + 1}$. 
+Suppose $b_k < b_{k+1}$. 
+Then $b_{k+1} = \sqrt{b_k + 1} < \sqrt{b_{k + 1} + 1} = b_{k+2}$, completeing the induction step, and proving that $(b_n)$ is bounded and monotone, and thus converges. 
+
+\section*{Problem 5}
+
+Suppose $(a_n)$ is convergent and $n > 3 \Rightarrow a_{2n} \leq 1$. Show that $\lim_{n \rightarrow \infty} a_n \leq 1$. 
+
+Since $(a_n)$ is convergent, it converges to a unique number $s$. Since $a_{2n}, n > 3$ is a subsequence of $(a_n)$, it also converges to $s$ (Thm. 19.4). Now, since $a_{2n} \leq 1$, we have that $\lim_{n \rightarrow \infty} a_{2n} \leq 1$, but $\lim_{n \rightarrow \infty} a_{2n} = s$, so $s \leq 1$ and $\lim_{n \rightarrow \infty} a_n = s \leq 1$. 
+\end{document}
+
+
+

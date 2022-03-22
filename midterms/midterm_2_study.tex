@@ -1,0 +1,184 @@
+\documentclass{book}
+
+\usepackage{amsmath, amssymb, geometry, setspace, titlesec}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+
+\title{Math 401: Midterm 2 Study Guide}
+\author{Tim Farkas}
+\date{Oct 2021}
+
+\begin{document}
+\maketitle
+
+\chapter*{Chapter 3: The Real Numbers}
+
+\section*{Definitions \& Theorems}
+
+\subsection*{Theorem 10.6(2) (Principle of Mathematical Induction)}
+
+$P(n)$ is true for all $n > m$, $n, m \in \mathbb{N}$ provded 
+
+(a) $P(m)$ is true, and 
+
+(b) for each $k \in \mathbb{N} \geq m$, if $P(k)$ is true, then $P(k+1)$ is true. 
+
+Note: If $m = 1$, then $P(n)$ is true for all $n \in \mathbb{N}$. 
+
+\subsection*{Theorem 11.9d (Triangle Inequality)}
+
+Let $x, y \in \mathbb{R}$. Then $\left|x + y\right| \leq |x| + |y|$. 
+
+\subsection*{Theorem 12.1}
+
+Let $p$ be a prime number. Then $\sqrt{p}$ is not a rational number. 
+
+\subsection*{Definition 12.2 (Upper / Lower Bound)}
+
+If there exists a real number $m$ such that $m \geq s$ for all $s \in S$, then $m$ is an \emph{upper bound} of $S$, and we say $S$ is "bounded above"
+
+Flip for \emph{lower bound}. 
+
+\subsection*{Definition 12.2 (Maximum / Minimum)}
+
+If there exists an upper (lower) bound $m$ of $S$ that is a member of $S$, then $m$ is the \emph{maximum (minimum)} of $S$. 
+
+\subsection*{Definition 12.5 (Supremum / Infimum)}
+
+An upper (lower) bound $m$ of a non-empty subset of $   \mathbb{R}$ is called the \emph{supremum (infimum)} or \emph{least upper (greatest lower) bound} of $S$ iff
+
+if for all $m' < m$, there exists an $s \in S$ such that $s > m'$. 
+
+Flip for infimum. 
+
+\subsection*{Axiom (Completeness of the Reals)}
+
+Every non-empty subset of $\mathbb{R}$ that is bounded above (below) has a supremum (infimum). 
+
+\subsection*{Theorem 12.9(10) (The Archimedean Property)}
+
+The following are equivalent: 
+
+(a) The set $\mathbb{N}$ of natural numbers is unbounded above in $\mathbb{R}$. 
+
+(b) For each $z \in \mathbb{R}$, there exists an $n \in \mathbb{N}$ such that $n > z$. 
+
+(c) For each $x > 0$ and for each $y \in \mathbb{R}$, there exists an $n \in \mathbb{N}$ such that $nx > y$. 
+
+(d) For each $x > 0$, there exists an $n \in \mathbb{N}$ such that $0 < \frac{1}{n} < x$. 
+
+\subsection*{Theorems 12.12 and 12.13}
+
+If $x$ and $y$ are real numbers and $x < y$, then there exists both an irrational number $i$ such that 
+$x < i < y$, and a rational number $r$ such that $x < r < y$. 
+
+\subsection*{Definition 13.3 (Interior Point)}
+
+A point $x$ in $\mathbb{R}$ is an \emph{interior point} of $S$ if there exists a (non-deleted) neighborhood $N$ of $x$ such that $N \subseteq S$. 
+
+\subsection*{Definition 13.3 (Boundary Point)}
+
+A point $x$ in $\mathbb{R}$ is a \emph{boundary point} of $S$ if for every (non-deleted) neighborhood $N$ of $x$, we have $N \cap S \neq \emptyset$ and $N \cap S^c \neq \emptyset$. 
+
+\subsection*{Definition 13.6 (Open / Closed Sets)}
+
+Let $S \in \mathbb{R}$. 
+
+If $    \text{bd} \,S \subseteq S$, then $S$ is \emph{closed}.
+
+If $\text{bd} \,S \subseteq S^c$, then $S$ is \emph{open}. 
+
+\subsection*{Definition 13.14 (Accumulation / Isolated Points)}
+
+A point $x \in \mathbb{R}$ is an \emph{accumulation point} of $S$ if every deleted neighborhood of $x$ contains a point in $S$. 
+
+Otherwise, $x$ is an \emph{isolated point} of $S$. 
+
+\subsection*{Definition 14.1 (Open Cover)}
+
+A family $\mathcal{F}$ of open sets is an \emph{open cover} of the set $S$ if $S \subseteq \bigcup \mathcal{F}$. 
+
+\subsection*{Definition 14.1 (Subcover)}
+
+If $\mathcal{G} \subseteq \mathcal{F}$, and $\mathcal{G}$ is also an open cover of $S$, then $\mathcal{G}$ is a \emph{subcover} of $S$. 
+
+\subsection*{Definition 14.1 (Compact Set)}
+
+The set $S$ is called \emph{compact} if every open cover of $S$ contains a finite subcover. 
+
+\subsection*{Theorem 14.5 (Heine-Borel)}
+
+A subset $S$ of $\mathbb{R}$ is compact iff $S$ is closed and bounded. 
+
+\chapter*{Chapter 4: Sequences}
+
+\section*{Definitions \& Theorems}
+
+\subsection*{Definition 16.2 (Convergence)}
+
+A sequence $s_n$ is said to \emph{converge} to a number $L$ if for every $\epsilon > 0$ there exists a number $N \in  \mathbb{N}$ such that if $n > N$, then $\left|s_n - L\right| < \epsilon$. 
+
+\subsection*{Theorem 16.13}
+
+Every convergent sequence is bounded. 
+
+\subsection*{Theorem 16.14}
+
+If a sequence converges, it's limit is unique. 
+
+\subsection*{Theorem 17.1 (Fundamental Limit Theorems)}
+
+Suppose that $(s_n)$ and $(t_n)$ are convergent sequences with limits $s$ and $t$. Then
+
+(a) $\lim_{n \rightarrow \infty} (s_n + t_n) = s + t$
+
+(b) $\lim_{n \rightarrow \infty} ks_n = ks$ and $\lim_{n \rightarrow \infty} (k + s_n) = k + s$ for any $k \in \mathbb{R}$. 
+
+(c) $\lim_{n \rightarrow \infty} s_nt_n = st$. 
+
+(d) $\lim_{n \rightarrow \infty} \frac{s_n}{t_n} = \frac{s}{t}$. 
+
+\subsection*{Definition 18.1 (Monotone)}
+
+A sequence is \emph{monotone} if either $s_n \leq s_{n+1}$ (increasing) or $s_n \geq s_{n+1}$ (decreasing) for all $n \in \mathbb{N}$. 
+
+\subsection*{Theorem 18.3 (Monotone Convergence Theorem)}
+
+A monotone sequence is convergent iff it is bounded. 
+
+\subsection*{Definition 18.9 (Cauchy Sequence)}
+
+A sequence $(s_n)$ is a \emph{Cauchy sequence} if for all $\epsilon > 0$, there exists a number $N \in \mathbb{N}$ such that if $n, m  > N$, then $\left|s_n - s_m \right| < \epsilon$. 
+
+\subsection*{Theorem 18.12 (Cauchy Convergence Criterion}
+
+A sequence of real numbers is convergent iff it is a Cauchy sequence. 
+
+\subsection*{Definition 19.1 (Subsequence)}
+
+Let $(n_k)$ be a sequence of natural numbers such that $n_1 < n_2 < ... < n_k$. Then $s_{n_k}$ is a \emph{subsequence} of $s_n$. 
+
+\subsection*{Theorem 19.4}
+
+If a sequence $(s_n)$ converges to a real number $s$, then any subsequence of $(s_n)$ converges to $s$. 
+
+\subsection*{Theorem 19.7}
+
+Every bounded sequence has at least one convergent subsequence. 
+
+\subsection*{Definition 19.9 (Limit Superior / Inferior)}
+
+If $S$ is the set of subsequential limits of a sequence $(s_n)$, the \emph{limit superior} $\text{lim sup }s_n = \sup(S)$. The \emph{limit inferior} is defined likewise with the infimum of $S$. 
+
+
+\end{document}
+
+
+

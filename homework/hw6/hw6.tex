@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, geometry, setspace}
+\usepackage[parfill]{parskip}
+\renewcommand{\thesubsection}{\thesection\alph{subsection}}
+\onehalfspacing
+
+\title{Math 401: Homework 6}
+\author{Tim Farkas}
+\date{Oct 2021}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Suppose $a_n$ is real for all $n \in \mathbb{N}$ and that $\lim_{n \rightarrow \infty} a_n = L$. 
+Define $b_1 = \pi$ and $b_n = a_{n-1}$ for all $n \geq 2$. 
+Prove that $(b_n)$ converges to $L$.  
+
+Proof: Since $\lim_{n \rightarrow \infty} a_n = L$, we have by definition that $\forall \epsilon > 0$, $\exists N_a$ s.t. $\forall n \in \mathbb{N}$, $n > N_a \rightarrow \left|a_n - L\right| < \epsilon$. 
+For a given $\epsilon$ and corresponding $N_a$, take $N_b = N_a + 1$.
+Then if $n > N_b \geq 2$, we have $n > N_a + 1$, and $n - 1 > N_a$, which implies
+$\left|a_{n-1} - L\right| < \epsilon = \left|b_n - L\right| < \epsilon$. 
+Proving the claim that $(b_n)$ converges to $L$. 
+
+\section*{Problem 2}
+
+Suppose $a_n$ is real for all $n \in \mathbb{N}$ and that $\lim_{n \rightarrow \infty} a_n = L$. 
+Define $b_{2n} = a_n$ and $b_{2n+1} = a_n$ for all $n \in \mathbb{N}$. 
+Prove that $b_n$ converges to $L$. 
+
+Proof: We seek $N_b$ such that for all $n \in \mathbb{N}$ if $n > N_b$ implies $\left|b_n - L\right| < \epsilon$. 
+For any given $\epsilon$, we have by definition of a limit a real number $N_a$ such that if $n \in \mathbb{N} > N_a$ implies $\left|a_n - L\right| < \epsilon$.
+
+Take $N_b = N_a + 1$. 
+
+Then when even $n > N_b$, we have $n > 2N_a$, and $\frac{n}{2} > N_a$. Hence $\left|a_{n/2} - L\right| < \epsilon$, and $\left|b_n - L\right| < \epsilon$. 
+
+And when odd $n > N_b$, we have $n > 2N_a + 1$, and $\frac{n-1}{2} > N_a$. Hence $\left|a_{(n-1)/2} - L\right| < \epsilon$, and $\left|b_n - L\right| < \epsilon$. 
+
+\section*{Problem 3}
+
+Suppose $a_n$ and $b_n$ are real for every $n \in \mathbb{N}$ and $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} b_n = L$. 
+
+Define $c_{2n} = a_n$ an $c_{2n+1} = b_n$ for all $n \in \mathbb{N}$. Prove that $c_n$ converges. 
+
+Proof: We seek $N_c$ such that for all $n \in \mathbb{N}$ if $n > N_c$ implies $\left|c_n - L\right| < \epsilon$. 
+Note we have by definition real numbers $N_a$ and $N_b$ to satisfy convergence for the same $\epsilon$ for $a_n$ and $b_n$ respectively. However, we do not know which is larger. 
+
+Therefore, take $N^* = \max\{N_a, N_b\}$ and $N_c = 2N^* + 1$. 
+
+If $n$ is even, we have that $n > 2N^* + 1 > N_a$, so $\frac{n}{2} > N^* + \frac{1}{2} > N_a$. Hence $\left|a_{n/2} - L\right| < \epsilon$ and $\left|c_n - L\right| < \epsilon$. 
+
+If $n$ is odd, we have that $n > 2N^* + 1 > N_b$, so $\frac{n-1}{2} > N^* \geq  N_b$. Hence $\left|b_{(n-1)/2} - L\right| < \epsilon$ and $\left|c_n - L\right| < \epsilon$. 
+
+\end{document}
+
+
